@@ -17,6 +17,8 @@ func tests() {
 	slog.With("foo", 1, "bar", 2).Info("msg")
 	slog.With(slog.Int("foo", 1)).Info("msg")
 	slog.With(slog.Int("foo", 1), slog.Int("bar", 2)).Info("msg")
+	slog.Group("group", "foo", 1, "baz", 2)
+	slog.Group("group", slog.String("foo", "1"))
 
 	slog.Log(ctx, slog.LevelInfo, "msg", "foo", 1, slog.Int("bar", 2)) // want `key-value pairs and attributes should not be mixed`
 	slog.Debug("msg", "foo", 1, slog.Int("bar", 2))                    // want `key-value pairs and attributes should not be mixed`
@@ -28,6 +30,7 @@ func tests() {
 	slog.WarnContext(ctx, "msg", "foo", 1, slog.Int("bar", 2))         // want `key-value pairs and attributes should not be mixed`
 	slog.ErrorContext(ctx, "msg", "foo", 1, slog.Int("bar", 2))        // want `key-value pairs and attributes should not be mixed`
 	slog.With("foo", 1, slog.Int("bar", 2)).ErrorContext(ctx, "msg")   // want `key-value pairs and attributes should not be mixed`
+	slog.Group("group", slog.String("foo", "1"), "baz", 2)             // want `key-value pairs and attributes should not be mixed`
 
 	logger.Log(ctx, slog.LevelInfo, "msg", "foo", 1, slog.Int("bar", 2))         // want `key-value pairs and attributes should not be mixed`
 	logger.Debug("msg", "foo", 1, slog.Int("bar", 2))                            // want `key-value pairs and attributes should not be mixed`

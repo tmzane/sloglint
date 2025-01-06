@@ -129,6 +129,7 @@ var slogFuncs = map[string]struct {
 	"log/slog.InfoContext":            {argsPos: 2},
 	"log/slog.WarnContext":            {argsPos: 2},
 	"log/slog.ErrorContext":           {argsPos: 2},
+	"log/slog.Group":                  {argsPos: 1},
 	"(*log/slog.Logger).With":         {argsPos: 0, skipContextCheck: true},
 	"(*log/slog.Logger).Log":          {argsPos: 3},
 	"(*log/slog.Logger).LogAttrs":     {argsPos: 3},
